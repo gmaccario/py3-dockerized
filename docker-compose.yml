@@ -1,0 +1,33 @@
+version: '3.6'
+
+services:
+  python:
+    build:
+      context: ./bin/python
+    container_name: python-3.7.3
+    command: tail -f /dev/null
+    ports:
+     - "8000:8000"
+    volumes:
+      - "./:/app"
+    links:
+      - 'mysql'
+
+  mysql:
+    image: mariadb:latest
+    container_name: mysql_python
+    ports:
+      - "3307:3306"
+    volumes:
+      - mariadb_python_data:/var/lib/mysql
+      - mariadb_python_logs:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: tiger
+      MYSQL_USER: root
+      MYSQL_PASSWORD: tiger
+      MYSQL_DATABASE: dbdockerized
+
+
+volumes:
+  mariadb_python_data:
+  mariadb_python_logs:
