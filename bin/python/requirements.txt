@@ -1,8 +1,2 @@
-requests
 pprint
-beautifulsoup4
-feedparser
-nltk
-ibm_watson
-ibm_cloud_sdk_core
 mysql-connector-python==8.0.17
